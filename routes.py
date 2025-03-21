@@ -45,7 +45,7 @@ def register():
 @login_required
 def dashboard():
     ships = Ship.query.all()
-    user_orders = None
+    user_orders = Order.query.all()
     users = None
     if current_user.role == 'user':
         user_orders = Order.query.filter_by(user_id=current_user.id).all()
