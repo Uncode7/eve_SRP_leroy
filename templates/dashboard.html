@@ -5,6 +5,7 @@
     
     {% if current_user.role == 'user' %} 
         <h2>Solicitar Nave</h2>
+         <!--form para solicitar nave-->
         <form action="/request_ship" method="post">
             <label for="ship">Escolha a nave:</label>
             <select name="ship" id="ship">
@@ -28,6 +29,29 @@
     
     {% if current_user.role == 'manager' or current_user.role == 'admin' %}
         <h2>Gerenciar Naves</h2>
+        <!--form para adicionar nave-->
+        <h2>Adicionar Nave</h2>
+        <h2>LISTA DE NAVES</h2>
+        <P><table style="margin: auto; width: 80%; max-width: 600px; border-collapse: collapse;">
+          <thead>
+              <tr>
+                  <th style="border: 1px solid #ccc; padding: 8px;">Naves</th>
+                  <th style="border: 1px solid #ccc; padding: 8px;">Quantidade</th>
+                  <th style="border: 1px solid #ccc; padding: 8px;">Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+            <!--{% for ship in ships %}-->
+            <tr>
+              <td style="border: 1px solid #ccc; padding: 8px;">x</td>
+              <td style="border: 1px solid #ccc; padding: 8px;">x</td>
+              <td style="border: 1px solid #ccc; padding: 8px;">
+                <a href="{{ url_for('delete_request', request_id=ship.id) }}" style="color: red; text-decoration: none;">🗑 Deletar</a>
+              </td>
+            </tr>
+            <!--{% endfor %}-->
+          </tbody>
+      </table></P>
         <form action="/add_ship" method="post">
             <input type="text" name="ship_name" placeholder="Nome da nave">
             <button type="submit">Adicionar</button>
